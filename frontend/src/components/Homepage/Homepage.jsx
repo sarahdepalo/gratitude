@@ -1,4 +1,5 @@
-import ParticlesBG from "../ParticlesBG/ParticlesBG";
+import ParticlesBG from "../particlesBG/ParticlesBG";
+import Login from "../userAuth/Login";
 import "./homepage.scss";
 const Homepage = () => {
   return (
@@ -15,7 +16,7 @@ const Homepage = () => {
               <p>
                 Journaling can help reduce stress and manage anxiety. Foster a habit of reflection, meditation, and growth.
               </p>
-              <button type="button" className="btn btn-primary">Login or Sign Up</button>
+             <Login/>
             </div>
           </div>
         </div>
