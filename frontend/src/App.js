@@ -1,7 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Homepage from "./components/homepage/Homepage";
 import Dashboard from "./components/dashboard/Dashboard";
+
 function App() {
   const { isAuthenticated } = useAuth0();
   return (
@@ -9,9 +15,16 @@ function App() {
       <Router>
         <Routes>
           <Route
-            exact path="/"
-            element={!isAuthenticated ? <Homepage /> : <Dashboard />}
+            exact
+            path="/"
+            element={
+              !isAuthenticated ? <Homepage /> : <Navigate to="/dashboard" />}
           />
+          <Route
+            exact
+            path="/dashboard"
+            element={isAuthenticated ? <Dashboard /> : <Homepage />}
+          ></Route>
         </Routes>
       </Router>
     </>
