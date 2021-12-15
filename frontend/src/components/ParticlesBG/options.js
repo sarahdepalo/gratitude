@@ -1,7 +1,7 @@
 const options = {
   background: {
     color: {
-      value: "#2a2a2a",
+      value: "#121212",
     },
   },
   fpsLimit: 60,

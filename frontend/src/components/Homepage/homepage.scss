@@ -1,3 +1,4 @@
+@import "../../variables";
 .intro {
   height: 100vh;
   width: 100vw;
@@ -12,6 +13,10 @@
     justify-content: center;
     align-content: center;
   }
+
+  .btn {
+    margin: 0 auto;
+  }
 }
 
 .sign-up-blurb {
@@ -22,7 +27,7 @@
     text-align: center;
   }
   div {
-    background-color: rgba(0, 0, 0, 0.459);
+    background-color: $background;
     padding: 20px;
     color: white;
   }

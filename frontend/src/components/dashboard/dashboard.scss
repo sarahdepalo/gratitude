@@ -1,0 +1,46 @@
+@import "../../variables";
+
+body {
+  background: $background;
+  color: white;
+}
+
+.prompt {
+  font-family: $secondary-title;
+  font-weight: 400;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background: url("./leaves.svg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  .container {
+    background: $surface;
+    padding: 18px;
+    width: 50%;
+    margin: 0 auto;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    form {
+        height: 50%;
+    }
+
+    .btn {
+        margin-top: 65px;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .dashboard {
+    .container {
+      width: 80%;
+      height: 600px;
+    }
+  }
+}
