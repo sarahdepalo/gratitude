@@ -15,8 +15,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getPrompt = async () => {
-      const url = `http://localhost:5000/prompts`;
-      const response = await fetch(url).then((response) => response.json());
+      const localUrl = `http://localhost:5000/prompts/${user.sub.slice(6)}`;
+      const response = await fetch(localUrl).then((response) =>
+        response.json()
+      );
       setPrompt(response);
       console.log(response);
     };
@@ -39,6 +41,10 @@ const Dashboard = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (userResponse === "") {
+      toast.error("Entry cannot be blank.");
+      return;
+    }
     const localUrl = "http://localhost:5000/journal/add";
     const response = await fetch(localUrl, {
       method: "POST",
@@ -46,21 +52,23 @@ const Dashboard = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user_id: user.sub.slice(6), 
+        user_id: user.sub.slice(6),
         userResponse: userResponse,
-        date: new Date(Date.now()).toISOString().replace('T',' ').replace('Z',''), //converts to Postgres acceptable date format
-        prompt_id: prompt.id
+        date: new Date(Date.now())
+          .toISOString()
+          .replace("T", " ")
+          .replace("Z", ""), //converts to Postgres acceptable date format
+        prompt_id: prompt.id,
       }),
     }).then((response) => response.json());
-    
+
     if (response.status === 200) {
       toast.success(response.message);
-      navigate('/journal');
-
+      navigate("/journal");
     } else {
-      toast.error(response.message)
+      toast.error(response.message);
     }
-  }
+  };
 
   return (
     <>
@@ -70,10 +78,11 @@ const Dashboard = () => {
             <>
               <h3>{today}</h3>
               <h2 className="prompt">{prompt.question}</h2>
-              <form onSubmit={(event) => handleSubmit(event)}> 
-                <textarea placeholder="Type your response..."
-                value={userResponse}
-                onChange={(event) => handleChange(event)}
+              <form onSubmit={(event) => handleSubmit(event)}>
+                <textarea
+                  placeholder="Type your response..."
+                  value={userResponse}
+                  onChange={(event) => handleChange(event)}
                 ></textarea>
                 <button type="submit" className="btn btn-primary">
                   Save to Journal
