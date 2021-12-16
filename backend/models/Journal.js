@@ -25,6 +25,9 @@ class Journal {
                 (user_id, response, entry_date, prompt_id)
                 VALUES
                 ('${user_id}', '${userResponse}', '${date}', ${prompt_id});
+                UPDATE users 
+                SET completed_prompts = array_append(completed_prompts, ${prompt_id})
+                WHERE id = '${user_id}' 
             `);
             return response;
 
