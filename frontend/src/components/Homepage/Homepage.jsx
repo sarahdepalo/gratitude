@@ -1,8 +1,11 @@
 import ParticlesBG from "../particlesBG/ParticlesBG";
 import Login from "../userAuth/Login";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./homepage.scss";
 
 const Homepage = () => {
+  const { isAuthenticated } = useAuth0();
+  console.log(isAuthenticated)
   return (
     <>
       <main className="intro">

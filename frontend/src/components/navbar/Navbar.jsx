@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faBook, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faBook } from "@fortawesome/free-solid-svg-icons";
+import LogoutButton from "../userAuth/Logout";
 import "./navbar.scss";
 
 const Navbar = () => {
@@ -16,8 +17,7 @@ const Navbar = () => {
             <p>Journal</p>
           </li>
           <li>
-            <FontAwesomeIcon icon={faDoorOpen} size="lg" className="door" />
-            <p>Logout</p>
+            <LogoutButton/>
           </li>
         </ul>
       </nav>
