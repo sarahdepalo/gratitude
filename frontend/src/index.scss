@@ -69,6 +69,14 @@ textarea {
 	outline: inherit;
 }
 
+// TOASTIFY
+.Toastify__toast-theme--light {
+  background: $surface;
+  color: white;
+  font-family: $body-font;
+}
+
+
 // Credit: https://codepen.io/jakob-e/pen/yVyYzv
 // ==============================
 // Font size mixin
