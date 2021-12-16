@@ -26,6 +26,8 @@ server.listen(port, host, () => {
 
 const root = require("./routes/index");
 const journal = require("./routes/journal");
+const prompts = require("./routes/prompts");
 
 app.use("/", root);
 app.use("/journal", journal)
+app.use("/prompts", prompts)
