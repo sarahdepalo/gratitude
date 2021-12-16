@@ -17,5 +17,22 @@ router.get("/", async (req, res) => {
    
 });
 
+router.post("/add", async (req, res) => {
+    const {user_id, userResponse, date, prompt_id} = req.body;
+    const response = await JournalModel.addEntry(user_id, userResponse, date, prompt_id);
+
+    if(response instanceof Error) {
+        res.json({
+            "message": "There was an error saving your entry. Please try again.",
+            "status": 500
+        }).status(500)
+    } else {
+           res.json({
+            "message": "Entry has been added. You can edit and view the entry in your journal.",
+            "status": 200
+        }).status(200)
+    }
+});
+
 
 module.exports = router;

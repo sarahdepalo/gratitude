@@ -17,6 +17,22 @@ class Journal {
             return error;
         }
     }
+
+    static async addEntry(user_id, userResponse, date, prompt_id) {
+        try {
+            const response = await db.any(`
+                INSERT INTO journal
+                (user_id, response, entry_date, prompt_id)
+                VALUES
+                ('${user_id}', '${userResponse}', '${date}', ${prompt_id});
+            `);
+            return response;
+
+        } catch(error) {
+            console.error("ERROR: ", error);
+            return error;
+        }
+    }
 }
 
 module.exports = Journal;
