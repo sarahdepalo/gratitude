@@ -21,8 +21,10 @@ const Dashboard = () => {
         response.json()
       );
       setPrompt(response.prompt);
-      setLastDate(new Date(`${response.lastDate}`));
-      console.log(response);
+      //set null if this is their first response (no date) otherwise create new date object
+      setLastDate(
+        !!response.lastDate ? new Date(`${response.lastDate}`) : null
+      );
     };
     getPrompt();
     getDate();
@@ -79,7 +81,7 @@ const Dashboard = () => {
           {prompt ? (
             <>
               <h3>{today}</h3>
-              {new Date(Date.now() - 864e5) > lastDate ? (
+              {new Date(Date.now() - 864e5) > lastDate || lastDate === null ? (
                 <>
                   <h2 className="prompt">{prompt.question}</h2>
                   <form onSubmit={(event) => handleSubmit(event)}>
@@ -95,8 +97,13 @@ const Dashboard = () => {
                 </>
               ) : (
                 <>
-                <p>You've already completed your daily prompt. Come back tomorrow for another one.</p>
-                <Link to="/journal" className="btn btn-primary">View Previous Entries</Link>
+                  <p>
+                    You've already completed your daily prompt. Come back
+                    tomorrow for another one.
+                  </p>
+                  <Link to="/journal" className="btn btn-primary">
+                    View Previous Entries
+                  </Link>
                 </>
               )}
             </>
