@@ -11,9 +11,9 @@ class Prompts {
               SELECT unnest(completed_prompts)
               FROM users
               WHERE users.id = '${user_id}'
-            )
+            );
         `);
-      return response
+      return response;
     } catch (error) {
       console.error(error);
       return error;
@@ -23,8 +23,22 @@ class Prompts {
   static async getAll() {
     try {
       const response = await db.any(`
-            SELECT * FROM PROMPTS
+            SELECT * FROM PROMPTS;
         `);
+        console.log(response)
+      return response;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  }
+
+  static async getCompletedDate(user_id) {
+    try {
+      const response = await db.one(`
+          SELECT CAST(last_complete as DATE) FROM users 
+          WHERE id = '${user_id}';
+      `);
       return response;
     } catch (error) {
       console.error(error);

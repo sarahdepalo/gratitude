@@ -5,6 +5,7 @@ CREATE TABLE users(
     password VARCHAR(255) NOT NULL,
     email_Verified BOOLEAN DEFAULT FALSE,
     completed_prompts integer[],
+    last_complete timestamp without time zone,
     PRIMARY KEY (id)
 );
 
