@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import Navbar from "../navbar/Navbar";
@@ -8,6 +8,7 @@ import "./dashboard.scss";
 const Dashboard = () => {
   const [today, setToday] = useState("");
   const [prompt, setPrompt] = useState(null);
+  const [lastDate, setLastDate] = useState(null);
   const [userResponse, setUserResponse] = useState("");
 
   const { user } = useAuth0();
@@ -19,7 +20,8 @@ const Dashboard = () => {
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );
-      setPrompt(response);
+      setPrompt(response.prompt);
+      setLastDate(new Date(`${response.lastDate}`));
       console.log(response);
     };
     getPrompt();
@@ -77,17 +79,26 @@ const Dashboard = () => {
           {prompt ? (
             <>
               <h3>{today}</h3>
-              <h2 className="prompt">{prompt.question}</h2>
-              <form onSubmit={(event) => handleSubmit(event)}>
-                <textarea
-                  placeholder="Type your response..."
-                  value={userResponse}
-                  onChange={(event) => handleChange(event)}
-                ></textarea>
-                <button type="submit" className="btn btn-primary">
-                  Save to Journal
-                </button>
-              </form>
+              {new Date(Date.now() - 864e5) > lastDate ? (
+                <>
+                  <h2 className="prompt">{prompt.question}</h2>
+                  <form onSubmit={(event) => handleSubmit(event)}>
+                    <textarea
+                      placeholder="Type your response..."
+                      value={userResponse}
+                      onChange={(event) => handleChange(event)}
+                    ></textarea>
+                    <button type="submit" className="btn btn-primary">
+                      Save to Journal
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <>
+                <p>You've already completed your daily prompt. Come back tomorrow for another one.</p>
+                <Link to="/journal" className="btn btn-primary">View Previous Entries</Link>
+                </>
+              )}
             </>
           ) : (
             <div className="lds-ring">
