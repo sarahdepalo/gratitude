@@ -1,14 +1,69 @@
 @import "../../variables";
 
-
 .journal {
-    h3 {
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
+  width: 100%;
+  margin: 0 auto;
+
+  .container {
+    background: $surface;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 45px;
+    padding: 5px 15px;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .arrow {
+    display: block;
+    margin-left: 12px;
+    &:hover {
+        cursor: pointer;
     }
-    .arrow {
-        display: block;
-        margin-left: 12px;
+  }
+  .calendar {
+      margin-left: auto;
+      color: $theme-secondary;
+      &:hover {
+          cursor: pointer;
+      }
+  }
+
+  table {
+      width: 100%;
+      text-align: left;
+      border-spacing: 0;
+      padding-bottom: 50px;
+     th, td {
+        border: 1px solid rgb(119, 119, 119);
+     }
+    //  th {
+    //      background: $background;
+    //  }
+    tr {
+        &:hover {
+            background: $background;
+            cursor: pointer;
+        }
     }
+  }
+
+  .entry {
+      padding-left: 15px;
+  }
+}
+
+.day-of-week {
+    text-align:center;
+    color: $theme-primary;
+    display: block;
+}
+
+.day {
+    text-align: center;
+    display: block;
+    
 }
