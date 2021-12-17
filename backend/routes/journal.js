@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
 router.post("/add", async (req, res) => {
     const {user_id, userResponse, date, prompt_id} = req.body;
-    const response = await JournalModel.addEntry(user_id, userResponse, date, prompt_id);
+    const response = await JournalModel.addEntry(user_id, userResponse.replace(/'/g, "''"), date, prompt_id);
 
     if(response instanceof Error) {
         res.json({
