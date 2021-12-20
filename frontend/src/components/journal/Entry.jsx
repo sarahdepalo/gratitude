@@ -1,11 +1,20 @@
+import {useNavigate} from "react-router-dom";
+
 const Entry = ({ entry }) => {
   const date = new Date(entry.entry_date);
   const dayOfWeek = date.toLocaleString("en-us", { weekday: "short" });
-  const day = date.getDay();
+  const day = date.getDate();
+  console.log(day);
+  console.log("Entry ID:", entry.id)
 
+  let navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/journal/${entry.id}`)
+  }
 
   return (
-    <tr>
+    <tr onClick={() => handleClick()}>
       <th>
         <span className="day-of-week">{dayOfWeek}</span>
         <span className="day">{day}</span>

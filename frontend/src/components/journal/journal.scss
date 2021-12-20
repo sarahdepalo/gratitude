@@ -21,49 +21,117 @@
     display: block;
     margin-left: 12px;
     &:hover {
-        cursor: pointer;
+      cursor: pointer;
     }
   }
   .calendar {
-      margin-left: auto;
-      color: $theme-secondary;
-      &:hover {
-          cursor: pointer;
-      }
+    margin-left: auto;
+    color: $theme-secondary;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   table {
-      width: 100%;
-      text-align: left;
-      border-spacing: 0;
-      padding-bottom: 50px;
-     th, td {
-        border: 1px solid rgb(119, 119, 119);
-     }
-    //  th {
-    //      background: $background;
-    //  }
+    width: 100%;
+    text-align: left;
+    border-spacing: 0;
+    padding-bottom: 50px;
+    th,
+    td {
+      border: 1px solid rgb(119, 119, 119);
+    }
     tr {
-        &:hover {
-            background: $background;
-            cursor: pointer;
-        }
+      &:hover {
+        background: $background;
+        cursor: pointer;
+      }
     }
   }
 
   .entry {
-      padding-left: 15px;
+    padding-left: 15px;
   }
 }
 
 .day-of-week {
-    text-align:center;
-    color: $theme-primary;
-    display: block;
+  text-align: center;
+  color: $theme-primary;
+  display: block;
 }
 
 .day {
-    text-align: center;
-    display: block;
-    
+  text-align: center;
+  display: block;
+}
+
+// JOURNAL ENTRY DETAILS
+
+.entry-details {
+  background: url("./pattern.svg") no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+  margin: 0 auto;
+  .container {
+    background: $surface;
+    width: 50%;
+    height: 70%;
+    margin: 0 auto;
+    margin-top: 55px;
+    padding: 5px 15px;
+    form {
+      height: 50%;
+    }
+  }
+  h4 {
+    margin-bottom: 4px;
+  }
+  textarea {
+    margin-bottom: 25px;
+    margin-top: 20px;
+    padding: 10px;
+    background: $background;
+  }
+
+  .btn {
+    margin-top: 3%;
+  }
+}
+
+small {
+  color: $theme-secondary;
+  font-style: italic;
+}
+
+@media screen and (max-width: 960px) {
+  .entry-details {
+    .container {
+      margin-top: 35px;
+      width: 80%;
+      height: 450px;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .entry-details {
+    .container {
+      width: 80%;
+      height: 50%;
+    }
+  }
+}
+
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+  //IPhone 5 only 
+  .entry-details {
+    .container {
+      height: 415px;
+
+      .btn {
+        margin-top: 0;
+      }
+    }
+  }
 }

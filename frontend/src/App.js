@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Homepage from "./components/homepage/Homepage";
 import Dashboard from "./components/dashboard/Dashboard";
 import Journal from "./components/journal/Journal";
+import EntryDetails from "./components/journal/EntryDetails";
 
 function App() {
   toast.configure();
@@ -20,7 +21,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={isAuthenticated ? <Navigate to="/dashboard"/> : <Homepage />} />
           <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/"/>} />
-          <Route exact path="/journal" element={isAuthenticated ? <Journal/> : <Navigate to="/journal" />} />
+          <Route exact path="/journal" element={isAuthenticated ? <Journal/> : <Navigate to="/" />} />
+          <Route path ="/journal/:id" element={isAuthenticated ? <EntryDetails/> : <Navigate to="/" />}/>
         </Routes>
       </Router>
     </>
