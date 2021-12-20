@@ -5,7 +5,7 @@ class Journal {
     static async getMonthlyEntries(user_id, month) {
         try {
             const response = await db.any(`
-                SELECT * FROM journal
+                SELECT journal.id, prompt_id, entry_date, response, question FROM journal
                 INNER JOIN prompts ON prompts.id = journal.prompt_id
                 WHERE user_id = '${user_id}' AND EXTRACT(month from entry_date) = ${month}
                 ORDER BY entry_date ASC;
@@ -13,6 +13,21 @@ class Journal {
             return response;
 
         } catch (error) {
+            console.error("ERROR: ", error);
+            return error;
+        }
+    }
+
+    static async getEntry(prompt_id) {
+        try {
+            const response = await db.one(`
+                SELECT journal.id, response, question, entry_date
+                FROM journal INNER JOIN prompts ON prompts.id = journal.prompt_id
+                WHERE journal.id = ${prompt_id};
+            `);
+            return response;
+
+        } catch(error) {
             console.error("ERROR: ", error);
             return error;
         }
@@ -35,6 +50,21 @@ class Journal {
             return response;
 
         } catch(error) {
+            console.error("ERROR: ", error);
+            return error;
+        }
+    }
+
+    static async updateEntry(entry_id, user_response) {
+        try {
+            const response = await db.any(`
+                UPDATE journal
+                SET response = '${user_response}'
+                WHERE id = ${entry_id};
+            `);
+            return response;
+
+        } catch (error) {
             console.error("ERROR: ", error);
             return error;
         }
