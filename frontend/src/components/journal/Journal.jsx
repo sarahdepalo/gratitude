@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import DatePicker from "react-datepicker";
 import Navbar from "../navbar/Navbar";
 import Entry from "./Entry";
+import "react-datepicker/dist/react-datepicker.css";
 import "./journal.scss";
 
 const Journal = () => {
   const [entries, setEntries] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const [datePickerOpen, setDatePickerOpen] = useState(false);
   const { user } = useAuth0();
 
   const today = new Date();
@@ -27,26 +31,52 @@ const Journal = () => {
     getEntries();
   }, []);
 
+  const openDatePicker = () => {
+    setDatePickerOpen(!datePickerOpen);
+  };
+
   return (
     <>
       <main className="journal">
         <div className="container">
-          <h3>
-            {month}
-            <FontAwesomeIcon icon={faAngleDown} size="sm" className="arrow" />
-            <FontAwesomeIcon icon={faCalendarAlt} size="sm" className="calendar"/>
-          </h3>
+          <div className="title-container">
+          <label>
+          <DatePicker
+              selected={startDate}
+              defaultValue={month}
+              onChange={(date) => setStartDate(date)}
+              minDate={new Date("2021-12-01")}
+              dateFormat="MMMM"
+              showMonthYearPicker
+              open={datePickerOpen}
+              shouldCloseOnSelect={true}
+              showPopperArrow={false}
+            />
+
+
+          <FontAwesomeIcon
+              icon={faCalendarAlt}
+              size="sm"
+              className="calendar"
+              onClick={openDatePicker}
+            />
+ 
+          </label>
+          </div>
+
           {!!entries ? (
-            <table>
-              <tbody>
-                {entries.map((entry) => (
-                  <Entry
-                  key={`${entry.id}-${entry.prompt_id}`}
-                  entry={entry}
-                  />
-                ))}
-              </tbody>
-            </table>
+            <div className="table-container">
+              <table>
+                <tbody>
+                  {entries.map((entry) => (
+                    <Entry
+                      key={`${entry.id}-${entry.prompt_id}`}
+                      entry={entry}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <p>No entries found for this month.</p>
           )}
