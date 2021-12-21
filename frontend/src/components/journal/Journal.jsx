@@ -10,29 +10,38 @@ import "./journal.scss";
 
 const Journal = () => {
   const [entries, setEntries] = useState(null);
+ 
   const [startDate, setStartDate] = useState(new Date());
   const [datePickerOpen, setDatePickerOpen] = useState(false);
-  const { user } = useAuth0();
-
   const today = new Date();
-  const month = today.toLocaleString("default", { month: "long" });
+  const [month, setMonth] = useState(today.getMonth() + 1);
+  const [year, setYear] = useState(today.getFullYear());
+
+  const { user } = useAuth0();
 
   useEffect(() => {
     const getEntries = async () => {
-      const localURL = `http://localhost:5000/journal/${user.sub.slice(6)}/${
-        today.getMonth() + 1
-      }`;
+      const localURL = `http://localhost:5000/journal/${user.sub.slice(
+        6
+      )}/${month}/${year}`;
       const response = await fetch(localURL).then((response) =>
         response.json()
       );
       console.log(response);
-      setEntries(response);
+      setEntries(response.status === 200 ? response.entries : null);
     };
     getEntries();
-  }, []);
+  }, [month, year]);
 
   const openDatePicker = () => {
     setDatePickerOpen(!datePickerOpen);
+  };
+
+  const handleDateChange = (date) => {
+    setStartDate(date);
+    let newDate = new Date(date);
+    setMonth(newDate.getMonth() + 1);
+    setYear(newDate.getFullYear());
   };
 
   return (
@@ -40,28 +49,26 @@ const Journal = () => {
       <main className="journal">
         <div className="container">
           <div className="title-container">
-          <label>
-          <DatePicker
-              selected={startDate}
-              defaultValue={month}
-              onChange={(date) => setStartDate(date)}
-              minDate={new Date("2021-12-01")}
-              dateFormat="MMMM"
-              showMonthYearPicker
-              open={datePickerOpen}
-              shouldCloseOnSelect={true}
-              showPopperArrow={false}
-            />
+            <label>
+              <DatePicker
+                selected={startDate}
+                defaultValue={month}
+                onChange={(date) => handleDateChange(date)}
+                minDate={new Date("2021-12-01")}
+                dateFormat="MMMM"
+                showMonthYearPicker
+                open={datePickerOpen}
+                shouldCloseOnSelect={true}
+                showPopperArrow={false}
+              />
 
-
-          <FontAwesomeIcon
-              icon={faCalendarAlt}
-              size="sm"
-              className="calendar"
-              onClick={openDatePicker}
-            />
- 
-          </label>
+              <FontAwesomeIcon
+                icon={faCalendarAlt}
+                size="sm"
+                className="calendar"
+                onClick={openDatePicker}
+              />
+            </label>
           </div>
 
           {!!entries ? (
