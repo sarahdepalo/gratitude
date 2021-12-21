@@ -7,7 +7,7 @@
   align-content: center;
   background: url("./journal-pattern.svg") no-repeat center center fixed;
   background-size: cover;
-  height: 90vh;
+  height: 100vh;
 
   .container {
     background: $surface;
@@ -16,7 +16,8 @@
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 170px;
-    height: 60%;
+    height: 50%;
+
   }
 
   h3 {
@@ -61,10 +62,13 @@
   }
 
   label {
-    display:flex;
+    display: flex;
     align-items: center;
-    width:100%;
+    width: 100%;
   }
+}
+div.table-container::-webkit-scrollbar {
+  color: pink;
 }
 
 .table-container {
@@ -89,16 +93,14 @@
 }
 
 .react-datepicker__input-container {
-
- input {
-   background: $surface;
-   color: white;
-   border: 0px;
-   font-family: $primary-title;
-   font-size: 25px;
-   font-weight: bold;
- }
-
+  input {
+    background: $surface;
+    color: white;
+    border: 0px;
+    font-family: $primary-title;
+    font-size: 25px;
+    font-weight: bold;
+  }
 }
 .react-datepicker-wrapper {
   width: 0px;
@@ -108,34 +110,46 @@
 // JOURNAL ENTRY DETAILS
 
 .entry-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   background: url("./entry-details-pattern.svg") no-repeat center center fixed;
   background-size: cover;
-  width: 100%;
-  height: 90vh;
-  margin: 0 auto;
+  height: 100vh;
+
   .container {
     background: $surface;
+    position: relative;
+    padding: 18px;
     width: 50%;
-    height: 70%;
     margin: 0 auto;
-    margin-top: 55px;
-    padding: 5px 15px;
+    margin-top: 50px;
+    margin-bottom: 170px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
     form {
-      height: 50%;
+      height: 60%;
+    }
+    .btn {
+      position: absolute;
+      left: 12px;
+      bottom: 20px;
     }
   }
   h4 {
     margin-bottom: 4px;
   }
   textarea {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     margin-top: 20px;
     padding: 10px;
     background: $background;
   }
 
   .btn {
-    margin-top: 3%;
+    margin-top: 5px;
   }
 }
 
@@ -144,8 +158,16 @@ small {
   font-style: italic;
 }
 
+.prompt {
+  font-family: $secondary-title;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 @media screen and (max-width: 960px) {
-  .entry-details, .journal {
+  .entry-details,
+  .journal {
     .container {
       margin-top: 35px;
       width: 80%;
@@ -155,7 +177,8 @@ small {
 }
 
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
-  .entry-details, .journal {
+  .entry-details,
+  .journal {
     .container {
       width: 80%;
       height: 50%;

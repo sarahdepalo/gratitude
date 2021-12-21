@@ -4,8 +4,6 @@ const Entry = ({ entry }) => {
   const date = new Date(entry.entry_date);
   const dayOfWeek = date.toLocaleString("en-us", { weekday: "short" });
   const day = date.getDate();
-  console.log(day);
-  console.log("Entry ID:", entry.id)
 
   let navigate = useNavigate();
 

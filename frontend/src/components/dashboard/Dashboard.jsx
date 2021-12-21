@@ -16,8 +16,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getPrompt = async () => {
-      const localUrl = `http://localhost:5000/prompts/${user.sub.slice(6)}`;
-      const response = await fetch(localUrl).then((response) =>
+      const url = `https://gratitude-journal1.herokuapp.com/prompts/${user.sub.slice(6)}`;
+      const response = await fetch(url).then((response) =>
         response.json()
       );
       setPrompt(response.prompt);
@@ -28,7 +28,7 @@ const Dashboard = () => {
     };
     getPrompt();
     getDate();
-  }, []);
+  }, [user.sub]);
 
   const getDate = () => {
     let today = new Date();
@@ -49,7 +49,7 @@ const Dashboard = () => {
       toast.error("Entry cannot be blank.");
       return;
     }
-    const localUrl = "http://localhost:5000/journal/add";
+    const localUrl = "https://gratitude-journal1.herokuapp.com/journal/add";
     const response = await fetch(localUrl, {
       method: "POST",
       headers: {

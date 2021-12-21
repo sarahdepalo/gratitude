@@ -12,8 +12,8 @@ const EntryDetails = () => {
 
   useEffect(() => {
     const getEntry = async () => {
-      const localUrl = `http://localhost:5000/journal/${id}`;
-      const response = await fetch(localUrl).then((response) =>
+      const url = `https://gratitude-journal1.herokuapp.com/journal/${id}`;
+      const response = await fetch(url).then((response) =>
         response.json()
       );
       setEntry(response);
@@ -21,7 +21,7 @@ const EntryDetails = () => {
       formatDate(response);
     };
     getEntry();
-  }, []);
+  }, [id]);
 
   const handleChange = (event) => {
     setUserResponse(event.target.value);
@@ -29,8 +29,8 @@ const EntryDetails = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const localUrl = "http://localhost:5000/journal/update";
-    const response = await fetch(localUrl, {
+    const url = "https://gratitude-journal1.herokuapp.com/journal/update";
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,13 +48,11 @@ const EntryDetails = () => {
   };
 
   const formatDate = (entry) => {
-    console.log("ENTRY DATE:",entry.entry_date)
     let journalDate = new Date(entry.entry_date);
     const dd = String(journalDate.getDate()).padStart(2, "0");
     const mm = journalDate.toLocaleString("default", { month: "short" });
     const yyyy = journalDate.getFullYear();
     journalDate = `${dd} ${mm} ${yyyy}`;
-    console.log("JOURNAL DATE: ", journalDate)
     setDate(journalDate);
   };
 
@@ -66,7 +64,7 @@ const EntryDetails = () => {
           {!!entry && !!date ? (
             <form onSubmit={(event) => handleSubmit(event)}>
               <h3>{date}</h3>
-              <h4>{entry.question}</h4>
+              <h3 className="prompt">{entry.question}</h3>
               <small>Click on entry to edit.</small>
               <textarea
                 value={userResponse}

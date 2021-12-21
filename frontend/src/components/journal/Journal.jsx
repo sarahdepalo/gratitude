@@ -21,17 +21,16 @@ const Journal = () => {
 
   useEffect(() => {
     const getEntries = async () => {
-      const localURL = `http://localhost:5000/journal/${user.sub.slice(
+      const url = `https://gratitude-journal1.herokuapp.com/journal/${user.sub.slice(
         6
       )}/${month}/${year}`;
-      const response = await fetch(localURL).then((response) =>
+      const response = await fetch(url).then((response) =>
         response.json()
       );
-      console.log(response);
       setEntries(response.status === 200 ? response.entries : null);
     };
     getEntries();
-  }, [month, year]);
+  }, [month, year, user.sub]);
 
   const openDatePicker = () => {
     setDatePickerOpen(!datePickerOpen);
@@ -57,7 +56,6 @@ const Journal = () => {
                 minDate={new Date("2021-12-01")}
                 dateFormat="MMMM"
                 showMonthYearPicker
-                open={datePickerOpen}
                 shouldCloseOnSelect={true}
                 showPopperArrow={false}
               />
