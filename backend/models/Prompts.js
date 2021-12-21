@@ -25,7 +25,6 @@ class Prompts {
       const response = await db.any(`
             SELECT * FROM PROMPTS;
         `);
-        console.log(response)
       return response;
     } catch (error) {
       console.error(error);

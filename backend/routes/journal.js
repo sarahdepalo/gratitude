@@ -7,7 +7,6 @@ const JournalModel = require("../models/Journal");
 router.get("/:user_id/:month/:year", async (req, res) => {
     const { user_id, month, year } = req.params;
     const entries = await JournalModel.getMonthlyEntries(user_id, month, year);
-    console.log(entries)
     if(entries.length > 0 ) {
         res.json({
             "entries": entries, 

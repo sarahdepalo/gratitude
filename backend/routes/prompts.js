@@ -5,7 +5,6 @@ const router = express.Router();
 const PromptModel = require("../models/Prompts");
 
 const randomize = (array) => {
-  console.log(array)
   const random = array.sort(() => Math.random() - 0.5);
   return random[0];
 };
