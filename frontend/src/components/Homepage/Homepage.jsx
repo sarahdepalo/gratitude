@@ -1,4 +1,4 @@
-import ParticlesBG from "../particlesBG/ParticlesBG";
+import ParticlesBG from "../ParticlesBG/ParticlesBG";
 import Login from "../userAuth/Login";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./homepage.scss";

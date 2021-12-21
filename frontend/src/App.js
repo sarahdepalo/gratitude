@@ -7,7 +7,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Homepage from "./components/homepage/Homepage";
+import Homepage from "./components/Homepage/Homepage";
 import Dashboard from "./components/dashboard/Dashboard";
 import Journal from "./components/journal/Journal";
 import EntryDetails from "./components/journal/EntryDetails";
