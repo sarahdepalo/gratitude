@@ -69,6 +69,7 @@ const EntryDetails = () => {
               <textarea
                 value={userResponse}
                 onChange={(event) => handleChange(event)}
+                rows="1" cols="10"
               ></textarea>
               <button type="submit" className="btn btn-primary">
                 Update Entry
