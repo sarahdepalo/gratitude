@@ -89,7 +89,7 @@ const Dashboard = () => {
                       placeholder="Type your response..."
                       value={userResponse}
                       onChange={(event) => handleChange(event)}
-                      rows="4" cols="50"
+                      rows="10" cols="50"
                     ></textarea>
                     <button type="submit" className="btn btn-primary">
                       Save to Journal
