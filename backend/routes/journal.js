@@ -4,15 +4,18 @@ const express = require('express');
 const router = express.Router();
 const JournalModel = require("../models/Journal");
 
-router.get("/:user_id/:month", async (req, res) => {
-    const { user_id, month } = req.params;
-    const entries = await JournalModel.getMonthlyEntries(user_id, month);
+router.get("/:user_id/:month/:year", async (req, res) => {
+    const { user_id, month, year } = req.params;
+    const entries = await JournalModel.getMonthlyEntries(user_id, month, year);
     console.log(entries)
     if(entries.length > 0 ) {
-        res.json(entries).status(200);
+        res.json({
+            "entries": entries, 
+            "status": 200
+        }).status(200);
     } else {
         res.json({
-            "error": "No entries found."
+            "status": 500
         }).status(500)
     }
    

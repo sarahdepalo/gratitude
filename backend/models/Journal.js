@@ -2,12 +2,13 @@
 const db = require("./conn");
 
 class Journal {
-    static async getMonthlyEntries(user_id, month) {
+    static async getMonthlyEntries(user_id, month, year) {
         try {
             const response = await db.any(`
                 SELECT journal.id, prompt_id, entry_date, response, question FROM journal
                 INNER JOIN prompts ON prompts.id = journal.prompt_id
-                WHERE user_id = '${user_id}' AND EXTRACT(month from entry_date) = ${month}
+                WHERE user_id = '${user_id}' AND EXTRACT(month from entry_date) = ${month} 
+                AND EXTRACT(year from entry_date) = ${year}
                 ORDER BY entry_date ASC;
             `);
             return response;
