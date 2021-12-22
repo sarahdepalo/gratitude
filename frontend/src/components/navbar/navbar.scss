@@ -7,6 +7,8 @@ nav {
   overflow: hidden;
   position: fixed;
   bottom: 0;
+  height: 120px;
+  top: calc(100vh - 120px);
 }
 
 .icons {
@@ -48,5 +50,10 @@ nav {
     li {
       margin-right: 55px;
     }
+  }
+
+  nav {
+    height: 90px;
+    top: calc(100vh - 90px);
   }
 }
