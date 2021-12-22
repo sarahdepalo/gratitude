@@ -16,7 +16,7 @@
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 170px;
-    height: 50%;
+    height: auto;
 
   }
 
@@ -135,7 +135,6 @@ div.table-container::-webkit-scrollbar {
     }
     .btn {
       position: absolute;
-      left: 12px;
       bottom: 20px;
     }
   }

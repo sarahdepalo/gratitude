@@ -30,7 +30,7 @@ body {
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 170px;
-    height: 50%;
+    height: auto;
     display: flex;
     flex-direction: column;
     form {
@@ -40,7 +40,6 @@ body {
 
     .btn {
       position: absolute;
-      left: 12px;
       bottom: 20px;
     }
   }
