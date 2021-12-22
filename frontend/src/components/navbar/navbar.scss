@@ -4,11 +4,8 @@ nav {
   width: 100%;
   margin: 0 auto;
   background: $surface;
-  overflow: hidden;
   position: fixed;
   bottom: 0;
-  height: 120px;
-  top: calc(100vh - 120px);
 }
 
 .icons {
@@ -31,6 +28,7 @@ nav {
     transition: all 0.3s ease 0s;
     &:hover {
       transform: translateY(-5px);
+
     }
   }
 }
@@ -50,10 +48,5 @@ nav {
     li {
       margin-right: 55px;
     }
-  }
-
-  nav {
-    height: 90px;
-    top: calc(100vh - 90px);
   }
 }
