@@ -120,8 +120,9 @@ const Dashboard = () => {
             </div>
           )}
         </div>
-        <Navbar />
+   
       </main>
+      <Navbar />
     </>
   );
 };

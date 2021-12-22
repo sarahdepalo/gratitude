@@ -86,8 +86,8 @@ const Journal = () => {
             <p>No entries found for this month.</p>
           )}
         </div>
-        <Navbar />
       </main>
+      <Navbar />
     </>
   );
 };
