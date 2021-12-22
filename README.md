@@ -1,0 +1,27 @@
+<h1 align="center">Gratitude 📕 </h1>
+<h2 align="center">Daily Journaling App</h2>   
+<p align="center">
+  <a href="https://github.com/sarahdepalo/gratitude/tree/main/backend"><strong>Explore The API Docs »</strong></a>
+</p>
+
+Gratitude was born from the desire of wanting to create a mobile-first application. I had a design in my head and needed to get it out in code. In the past, I have found that journaling about 3 things you're grateful for each day improved my mental health and self awareness. This was my main inspiration for the app, but instead of just writing about what you're grateful for, I wanted to include other positive journal prompts. This is a small app, but one that I really enjoyed making, especially working with PostgreSQL on the backend. I also experimented with dates more than I ever have in JavaScript. If you're reading this, I hope you check out the app and finish a journal prompt!
+
+## Features
+
+* Daily journal prompt - once submitted, a user must wait until the next day to receive another prompt
+* Prompts completed are kept track of in the db for each user to avoid duplicate prompts as much as possible. Once all prompts are completed, old ones will be cycled through again. 
+* Each entry is displayed in a journal and organized by date completed. Entries can be displayed based on month chosen by user. 
+* Entries can be viewed individually and updated. 
+
+## Technoligies, Libraries, and all the good tech stuff 🤓
+
+* PostgreSQL
+* Express
+* Node.js
+* React
+* Auth0
+* DatePicker
+* TsParticles
+* Toastify
+
+## Code Example
