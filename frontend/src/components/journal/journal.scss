@@ -17,7 +17,6 @@
     margin-top: 50px;
     margin-bottom: 170px;
     height: auto;
-
   }
 
   h3 {
@@ -68,7 +67,7 @@
   }
 }
 div.table-container::-webkit-scrollbar {
-  color: pink;
+  color: $surface;
 }
 
 .table-container {
@@ -127,7 +126,7 @@ div.table-container::-webkit-scrollbar {
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 170px;
-    height: 50%;
+    height: auto;
     display: flex;
     flex-direction: column;
     form {
@@ -169,9 +168,18 @@ small {
   .entry-details,
   .journal {
     .container {
-      margin-top: 35px;
+      margin-top: 80px;
       width: 80%;
       height: 450px;
+    }
+  }
+
+  .entry-details {
+    .container {
+      height: 80%;
+      form {
+        height: 55%;
+      }
     }
   }
 }
@@ -181,7 +189,6 @@ small {
   .journal {
     .container {
       width: 80%;
-      height: 50%;
     }
   }
 }
@@ -190,8 +197,9 @@ small {
   //IPhone 5 only
   .entry-details {
     .container {
-      height: 415px;
-
+      form {
+        height:50%;
+      }
       .btn {
         margin-top: 0;
       }

@@ -45,6 +45,17 @@ body {
   }
 }
 
+.complete {
+  height: 200px;
+  position: relative;
+  .btn {
+    position: absolute;
+    bottom: 0;
+    display:inline-block;
+  }
+}
+
+
 
 // LOADING SPINNNER
 .lds-ring {
@@ -90,7 +101,6 @@ body {
   .dashboard {
     .container {
       width: 80%;
-      height: 600px;
       .btn {
         margin-top: 0;
       }

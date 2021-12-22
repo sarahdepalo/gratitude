@@ -16,10 +16,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getPrompt = async () => {
-      const url = `https://gratitude-journal1.herokuapp.com/prompts/${user.sub.slice(6)}`;
-      const response = await fetch(url).then((response) =>
-        response.json()
-      );
+      const url = `https://gratitude-journal1.herokuapp.com/prompts/${user.sub.slice(
+        6
+      )}`;
+      const response = await fetch(url).then((response) => response.json());
       setPrompt(response.prompt);
       //set null if this is their first response (no date) otherwise create new date object
       setLastDate(
@@ -89,7 +89,8 @@ const Dashboard = () => {
                       placeholder="Type your response..."
                       value={userResponse}
                       onChange={(event) => handleChange(event)}
-                      rows="10" cols="50"
+                      rows="10"
+                      cols="50"
                     ></textarea>
                     <button type="submit" className="btn btn-primary">
                       Save to Journal
@@ -98,13 +99,15 @@ const Dashboard = () => {
                 </>
               ) : (
                 <>
-                  <p>
-                    You've already completed your daily prompt. Come back
-                    tomorrow for another one.
-                  </p>
-                  <Link to="/journal" className="btn btn-primary">
-                    View Previous Entries
-                  </Link>
+                  <div className="complete">
+                    <p>
+                      You've already completed your daily prompt. Come back
+                      tomorrow for another one.
+                    </p>
+                    <Link to="/journal" className="btn btn-primary">
+                      View Previous Entries
+                    </Link>
+                  </div>
                 </>
               )}
             </>
