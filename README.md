@@ -6,6 +6,8 @@
 
 Gratitude was born from the desire of wanting to create a mobile-first application. I had a design in my head and needed to get it out in code. In the past, I have found that journaling about 3 things you're grateful for each day improved my mental health and self awareness. This was my main inspiration for the app, but instead of just writing about what you're grateful for, I wanted to include other positive journal prompts. This is a small app, but one that I really enjoyed making, especially working with PostgreSQL on the backend. I also experimented with dates more than I ever have in JavaScript. If you're reading this, I hope you check out the app and finish a journal prompt!
 
+Start journaling at [https://gratitude-journal1.netlify.app/](https://gratitude-journal1.netlify.app/).
+
 ## Features ✨
 
 * Daily journal prompt - once submitted, a user must wait until the next day to receive another prompt
