@@ -5,7 +5,7 @@
 
 <h1 align="center">Prompts</h1>
 
-## Get All Prompts
+### Get All Prompts
 
 `GET /prompts/:user_id`
 
@@ -13,13 +13,13 @@ Returns a random prompt from an array based on prompts already completed by that
 
 <h1 align="center">Journal </h1>
 
-## Get All Journal Entries
+### Get All Journal Entries
 
 `GET /journal/:user_id/:month/:year`
 
 Month and year is required since the user has the ability to select a new month and year through the DatePicker. 
 
-## Get Individual Entry
+### Get Individual Entry
 
 `GET /journal/:entry_id`
 
@@ -34,13 +34,13 @@ Example response:
 }
 ```
 
-## Add Journal Entry
+### Add Journal Entry
 
 `POST /journal/add`
 
 Req body must contain user_id, userResponse, date, and prompt_id. Returns a success or error message and status. 
 
-## Update a Journal Entry
+### Update a Journal Entry
 
 `POST /journal/update`
 
