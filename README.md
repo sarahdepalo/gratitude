@@ -16,7 +16,8 @@ Start journaling at [https://gratitude-journal1.netlify.app/](https://gratitude-
 * Entries can be viewed individually and updated. 
 
 ## Screenshots
-
+![walkthrough gif of the app](./frontend/public/gratitude.gif)
+![homepage of gratitude](./frontend/public/homepage.png)
 
 ## Technoligies, Libraries, and all the good tech stuff 🤓
 
