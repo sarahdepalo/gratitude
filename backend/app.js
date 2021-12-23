@@ -31,3 +31,8 @@ const prompts = require("./routes/prompts");
 app.use("/", root);
 app.use("/journal", journal)
 app.use("/prompts", prompts)
+
+app.get("*", (req, res) => {
+  res.send("404 page not found");
+  res.status(404)
+})
