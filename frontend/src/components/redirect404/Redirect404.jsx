@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Navbar from "../navbar/Navbar";
 import gif from "./gratitude404.gif";
 
 const Redirect404 = () => {
@@ -12,7 +11,6 @@ const Redirect404 = () => {
           Return Home
         </Link>
       </div>
-      <Navbar />
     </>
   );
 };
