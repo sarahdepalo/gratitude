@@ -75,6 +75,25 @@ textarea {
 	outline: inherit;
 }
 
+// 404
+
+.error-container {
+  text-align: center;
+  width: 30%;
+  margin: 0 auto;
+  .error-gif {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .btn {
+    display: inline-block;
+    text-align: center;
+  }
+  h2 {
+    margin-top: -8px;
+  }
+}
+
 // TOASTIFY
 .Toastify__toast-theme--light {
   background: $surface;
@@ -131,3 +150,8 @@ textarea {
   @include font-size(16px, 18px);
 }
 
+@media screen and (max-width: 960px) {
+  .error-container {
+    width: 80%;
+  }
+}

@@ -11,6 +11,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Dashboard from "./components/dashboard/Dashboard";
 import Journal from "./components/journal/Journal";
 import EntryDetails from "./components/journal/EntryDetails";
+import Redirect404 from "./components/redirect404/Redirect404";
 
 function App() {
   toast.configure();
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/"/>} />
           <Route exact path="/journal" element={isAuthenticated ? <Journal/> : <Navigate to="/" />} />
           <Route path ="/journal/:id" element={isAuthenticated ? <EntryDetails/> : <Navigate to="/" />}/>
+          <Route path="*" element={<Redirect404/>}/>
         </Routes>
       </Router>
     </>
